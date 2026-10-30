@@ -19,3 +19,7 @@ A B.Tech AI student at IIT Gandhinagar, passionate about AI, programming, and le
 <p align="center">
   <img src="https://skillicons.dev/icons?i=python,c,java,react,nextjs,html,css,github,vscode,nodejs,arduino" />
 </p>
+
+## 📊 GitHub Stats:
+
+![](https://github-readme-stats.shion.dev/api/top-langs/?username=prashantjangir-git-hub&theme=shadow_blue&hide_border=false&include_all_commits=true&count_private=true&layout=compact)
