@@ -200,7 +200,7 @@
     .socials-label { margin: 70px 0 22px; font: 500 12.5px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
     .socials { display: flex; flex-wrap: wrap; gap: 34px 40px; padding-bottom: 46px; }
 
-    .portrait { position: relative; justify-self: center; width: min(380px, 80vw); aspect-ratio: 1; border-radius: 50%; box-shadow: var(--out-lg); display: grid; place-items: center; }
+    .portrait { will-change: transform; position: relative; justify-self: center; width: min(380px, 80vw); aspect-ratio: 1; border-radius: 50%; box-shadow: var(--out-lg); display: grid; place-items: center; }
     .portrait-ring { width: 86%; aspect-ratio: 1; border-radius: 50%; box-shadow: var(--in); display: grid; place-items: center; }
     .portrait-img { position: relative; width: 84%; aspect-ratio: 1; border-radius: 50%; box-shadow: var(--out); overflow: hidden; display: grid; place-items: center; font-size: 64px; font-weight: 800; color: var(--accent); background: var(--bg); }
     .portrait-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -414,7 +414,7 @@
     .top-btn svg { width: 16px; height: 16px; fill: currentColor; }
 
     /* Reveal on scroll */
-    .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.8s ease, transform 0.8s var(--ease); }
+    .reveal { opacity: 0; transform: translateY(34px) scale(0.985); transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease; }
     .reveal.in { opacity: 1; transform: none; }
 
     /* =========================================================
@@ -543,7 +543,7 @@
           <h2>Languages &amp; tools</h2>
           <p>The languages, frameworks and tools I work with.</p>
         </div>
-        <div class="skills reveal" id="skills-grid"></div>
+        <div class="skills" id="skills-grid"></div>
       </div>
     </section>
 
@@ -722,7 +722,7 @@
 
       /* ---------- Skills ---------- */
       document.getElementById('skills-grid').innerHTML = SKILLS.map(function (s) {
-        return '<div class="skill"><img src="https://skillicons.dev/icons?i=' + s[0] + '" alt="" loading="lazy" width="46" height="46" onerror="this.style.visibility=\'hidden\'">' + s[1] + '</div>';
+        return '<div class="skill reveal"><img src="https://skillicons.dev/icons?i=' + s[0] + '" alt="" loading="lazy" width="46" height="46" onerror="this.style.visibility=\'hidden\'">' + s[1] + '</div>';
       }).join('');
 
       /* ---------- Rotating word ---------- */
@@ -774,14 +774,102 @@
 
       document.getElementById('year').textContent = new Date().getFullYear();
 
-      /* ---------- Reveal on scroll + active nav ---------- */
-      var reveals = document.querySelectorAll('.reveal');
-      if ('IntersectionObserver' in window) {
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-        }, { threshold: 0.12 });
-        reveals.forEach(function (el) { io.observe(el); });
+      /* ---------- Buttery smooth scrolling (Lenis-style inertia) ---------- */
+      var REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var smooth = (function () {
+        // Touch devices already scroll with native momentum, so leave them alone
+        if (REDUCED || matchMedia('(pointer: coarse)').matches) return null;
+        var html = document.documentElement;
+        html.style.scrollBehavior = 'auto';           // JS handles easing now
+        var current = window.scrollY, target = current, running = false, last = 0;
+        var LERP = 0.085;                              // lower = silkier, longer glide
+        function maxY() { return html.scrollHeight - window.innerHeight; }
+        function clamp(v) { return Math.max(0, Math.min(maxY(), v)); }
+        function frame(now) {
+          var dt = last ? Math.min(now - last, 64) : 16.7;
+          last = now;
+          var k = 1 - Math.pow(1 - LERP, dt / 16.7);   // same feel at 60Hz and 120Hz
+          current += (target - current) * k;
+          if (Math.abs(target - current) < 0.4) { current = target; running = false; }
+          window.scrollTo(0, current);
+          if (running) requestAnimationFrame(frame); else last = 0;
+        }
+        function go(y) {
+          if (!running) current = window.scrollY;
+          target = clamp(y);
+          if (!running) { running = true; requestAnimationFrame(frame); }
+        }
+        window.addEventListener('wheel', function (e) {
+          if (e.ctrlKey || e.defaultPrevented) return;               // pinch / browser zoom
+          if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;     // horizontal gestures
+          e.preventDefault();
+          var d = e.deltaY * (e.deltaMode === 1 ? 40 : e.deltaMode === 2 ? window.innerHeight : 1);
+          go((running ? target : window.scrollY) + d);
+        }, { passive: false });
+        // Keyboard, scrollbar dragging, find-in-page: stay in sync with native scrolling
+        window.addEventListener('scroll', function () { if (!running) current = target = window.scrollY; });
+        window.addEventListener('resize', function () { target = clamp(target); });
+        return { to: go };
+      })();
 
+      // Menu / anchor links glide to their section
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href^="#"]');
+        if (!a || e.metaKey || e.ctrlKey || e.shiftKey) return;
+        var id = a.getAttribute('href');
+        var el = id === '#' ? document.body : document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        var y = id === '#home' ? 0 : el.getBoundingClientRect().top + window.scrollY - 10;
+        if (smooth) smooth.to(y); else window.scrollTo({ top: y, behavior: REDUCED ? 'auto' : 'smooth' });
+        try { history.pushState(null, '', id); } catch (err) {}
+      });
+
+      /* ---------- Hero parallax ---------- */
+      var portrait = document.querySelector('.portrait');
+      var heroText = document.querySelector('.hero-text');
+      if (!REDUCED && portrait) {
+        var ticking = false;
+        window.addEventListener('scroll', function () {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(function () {
+            var y = window.scrollY, h = window.innerHeight;
+            if (y < h * 1.2) {
+              portrait.style.transform = 'translate3d(0,' + (y * 0.18).toFixed(1) + 'px,0)';
+              heroText.style.transform = 'translate3d(0,' + (y * 0.06).toFixed(1) + 'px,0)';
+              heroText.style.opacity = Math.max(0, 1 - y / (h * 0.9)).toFixed(3);
+            }
+            ticking = false;
+          });
+        }, { passive: true });
+      }
+
+      /* ---------- Reveal on scroll (staggered) + active nav ---------- */
+      var io = null;
+      function settle(el) {
+        // once revealed, drop the reveal classes so hover transitions stay snappy
+        setTimeout(function () { el.classList.remove('reveal', 'in'); el.style.transitionDelay = ''; },
+                   (parseFloat(el.style.transitionDelay) || 0) + 950);
+      }
+      function watch(el) {
+        if (io) io.observe(el); else el.classList.remove('reveal');
+      }
+      if ('IntersectionObserver' in window && !REDUCED) {
+        io = new IntersectionObserver(function (entries) {
+          var i = 0;
+          entries.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            e.target.style.transitionDelay = Math.min(i++ * 80, 560) + 'ms';
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+            settle(e.target);
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+      }
+      document.querySelectorAll('.reveal').forEach(watch);
+
+      if ('IntersectionObserver' in window) {
         var links = document.querySelectorAll('.nav a.link');
         var navIo = new IntersectionObserver(function (entries) {
           entries.forEach(function (e) {
@@ -790,9 +878,7 @@
             }
           });
         }, { rootMargin: '-45% 0px -50% 0px' });
-        document.querySelectorAll('main section[id]').forEach(function (s) { navIo.observe(s); });
-      } else {
-        reveals.forEach(function (el) { el.classList.add('in'); });
+        document.querySelectorAll('main section[id]').forEach(function (sec) { navIo.observe(sec); });
       }
 
       /* ---------- Live GitHub data ---------- */
@@ -870,7 +956,7 @@
         own.sort(function (a, b) { return (b.stargazers_count - a.stargazers_count) || (new Date(b.pushed_at) - new Date(a.pushed_at)); });
         reposEl.innerHTML = own.slice(0, 9).map(function (r) {
           var lc = LANG_COLORS[r.language] || 'var(--accent)';
-          return '<a class="repo" href="' + esc(r.html_url) + '" target="_blank" rel="noopener noreferrer">' +
+          return '<a class="repo reveal" href="' + esc(r.html_url) + '" target="_blank" rel="noopener noreferrer">' +
             '<div class="repo-head"><span class="folder">' + FOLDER + '</span><span class="arrow">' + ARROW + '</span></div>' +
             '<h3>' + esc(r.name) + '</h3>' +
             '<p>' + (r.description ? esc(r.description) : 'No description yet.') + '</p>' +
@@ -880,6 +966,7 @@
               '<span>Updated ' + timeAgo(r.pushed_at) + '</span>' +
             '</div></a>';
         }).join('');
+        reposEl.querySelectorAll('.reveal').forEach(watch);
       }).catch(function () {
         langsEl.innerHTML = '<p style="color:var(--muted);margin:0">Couldn\'t load languages right now.</p>';
         reposEl.innerHTML = '<div class="empty">Couldn\'t reach GitHub right now — browse my repositories directly.<br>' +
