@@ -11,22 +11,9 @@ A B.Tech AI student at IIT Gandhinagar, passionate about AI, programming, and le
 ## 📫 Connect With Me
 
 <p align="center">
-  <a href="https://www.linkedin.com/in/prashant-jangir-254668382/">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="./assets/linkedin-dark.svg" />
-      <img src="./assets/linkedin-light.svg" alt="Prashant Jangir on LinkedIn" width="380" />
-    </picture>
-  </a>
-  <a href="https://www.instagram.com/prashantjangir_22/">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="./assets/instagram-dark.svg" />
-      <img src="./assets/instagram-light.svg" alt="Prashant Jangir on Instagram" width="380" />
-    </picture>
-  </a>
-</p>
-
-<p align="center">
-  📧 <a href="mailto:Prashant.jangir@iitgn.ac.in">Prashant.jangir@iitgn.ac.in</a>
+  <a href="https://www.linkedin.com/in/prashant-jangir-254668382/"><img src="./assets/linkedin.svg" alt="Prashant Jangir on LinkedIn" width="260" /></a>
+  <a href="https://www.instagram.com/prashantjangir_22/"><img src="./assets/instagram.svg" alt="Prashant Jangir on Instagram" width="260" /></a>
+  <a href="mailto:prashant.jangir@iitgn.ac.in"><img src="./assets/email.svg" alt="Email Prashant Jangir" width="260" /></a>
 </p>
 
 ## 🛠 Languages & Tools
