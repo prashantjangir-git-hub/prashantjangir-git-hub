@@ -22,6 +22,7 @@
       try { t = localStorage.getItem('pj-theme'); } catch (e) {}
       if (!t) t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.classList.add('js');
     })();
   </script>
 
@@ -189,6 +190,7 @@
        ========================================================= */
     .hero { min-height: 100vh; display: flex; align-items: center; padding: 140px 0 80px; }
     .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 64px; align-items: center; }
+    @media (min-width: 961px) { .hero-grid { align-items: start; } }
     .hero h1 { margin: 22px 0 14px; font-size: clamp(40px, 6vw, 68px); line-height: 1.05; font-weight: 800; letter-spacing: -0.035em; }
     .hero h1 .grad { background: var(--accent-fill); -webkit-background-clip: text; background-clip: text; color: transparent; }
     .hero .lead { margin: 0 0 8px; font-size: 18px; color: var(--muted); max-width: 520px; }
@@ -220,6 +222,39 @@
     .chip-1 { top: 6%; left: -10%; }
     .chip-2 { bottom: 8%; right: -12%; animation-delay: -3s; }
     @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+
+    /* ---------- Hand-drawn animated name (loader-style stroke sweep) ---------- */
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+    .hero h1.hero-name { margin: 22px 0 22px; line-height: 1; }
+    .hero-name .hi { display: block; margin-bottom: 18px; font-size: clamp(26px, 3vw, 34px); font-weight: 700; letter-spacing: -0.02em; color: var(--text); }
+    .name-svg { display: block; width: min(100%, 500px); height: auto; overflow: visible; }
+    .nm-stroke { stroke-width: 13; }
+    .js .nm-stroke { stroke-dasharray: 0 360; opacity: 0; }
+    .js .name-svg.done .nm-stroke { opacity: 1; }
+    .js .name-svg.play .nm-stroke {
+      animation:
+        nmArray 1.6s ease-in-out calc(0.3s + var(--i) * 0.09s) both,
+        nmOffset 1.6s linear calc(0.3s + var(--i) * 0.09s) both,
+        nmShow 1.6s linear calc(0.3s + var(--i) * 0.09s) both;
+    }
+    @keyframes nmShow { 0% { opacity: 0; } 1%, 100% { opacity: 1; } }
+    .js .name-svg.done .nm-stroke { stroke-dasharray: none; }
+    @keyframes nmArray {
+      0%   { stroke-dasharray: 0 360; }
+      50%  { stroke-dasharray: 70 290; }
+      100% { stroke-dasharray: 360 0; }
+    }
+    @keyframes nmOffset {
+      0%   { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: -360; }
+    }
+    @media (max-width: 640px) {
+      .name-svg { margin-inline: auto; width: min(100%, 380px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .js .nm-stroke, .js .name-svg.play .nm-stroke { animation: none; stroke-dasharray: none; }
+    }
 
     /* =========================================================
        Social buttons — layered stack + profile tooltip
@@ -478,7 +513,27 @@
       <div class="container hero-grid">
         <div class="hero-text">
           <span class="eyebrow"><span class="dot"></span>B.Tech AI · IIT Gandhinagar</span>
-          <h1>Hi, I'm <span class="grad">Prashant Jangir</span></h1>
+          <h1 class="hero-name">
+            <span class="hi">Hi, I'm</span>
+            <span class="sr-only">Prashant Jangir</span>
+          <svg class="name-svg" viewBox="0 0 550 281" fill="none" aria-hidden="true" stroke-linecap="round" stroke-linejoin="round">
+            <defs><linearGradient id="nm-g0" gradientUnits="userSpaceOnUse" x1="0" y1="102" x2="0" y2="-2"><stop stop-color="#2fa6c6"/><stop offset="1" stop-color="#6fd6ea"/></linearGradient><linearGradient id="nm-g1" gradientUnits="userSpaceOnUse" x1="17.0" y1="134" x2="17.0" y2="-2"><stop stop-color="#2fa6c6"/><stop offset="1" stop-color="#8fe2f0"/><animateTransform attributeName="gradientTransform" type="rotate" dur="8s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.125;0.25;0.375;0.5;0.625;0.75;0.875;1" keySplines=".42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1" values="0 17.0 66.0;-270 17.0 66.0;-270 17.0 66.0;-540 17.0 66.0;-540 17.0 66.0;-810 17.0 66.0;-810 17.0 66.0;-1080 17.0 66.0;-1080 17.0 66.0"/></linearGradient><linearGradient id="nm-g2" gradientUnits="userSpaceOnUse" x1="0" y1="102" x2="0" y2="-2"><stop stop-color="#2fa6c6"/><stop offset="1" stop-color="#6fd6ea"/></linearGradient><linearGradient id="nm-g3" gradientUnits="userSpaceOnUse" x1="0" y1="102" x2="0" y2="-2"><stop stop-color="#2fa6c6"/><stop offset="1" stop-color="#6fd6ea"/></linearGradient><linearGradient id="nm-g4" gradientUnits="userSpaceOnUse" x1="23.0" y1="134" x2="23.0" y2="-2"><stop stop-color="#2fa6c6"/><stop offset="1" stop-color="#8fe2f0"/><animateTransform attributeName="gradientTransform" type="rotate" dur="8s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.125;0.25;0.375;0.5;0.625;0.75;0.875;1" keySplines=".42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1" values="0 23.0 66.0;-270 23.0 66.0;-270 23.0 66.0;-540 23.0 66.0;-540 23.0 66.0;-810 23.0 66.0;-810 23.0 66.0;-1080 23.0 66.0;-1080 23.0 66.0"/></linearGradient><linearGradient id="nm-g5" gradientUnits="userSpaceOnUse" x1="0" y1="102" x2="0" y2="-2"><stop stop-color="#2fa6c6"/><stop offset="1" stop-color="#6fd6ea"/></linearGradient><linearGradient id="nm-g6" gradientUnits="userSpaceOnUse" x1="0" y1="102" x2="0" y2="-2"><stop stop-color="#2fa6c6"/><stop offset="1" stop-color="#6fd6ea"/></linearGradient><linearGradient id="nm-g7" gradientUnits="userSpaceOnUse" x1="17.0" y1="134" x2="17.0" y2="-2"><stop stop-color="#2fa6c6"/><stop offset="1" stop-color="#8fe2f0"/><animateTransform attributeName="gradientTransform" type="rotate" dur="8s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.125;0.25;0.375;0.5;0.625;0.75;0.875;1" keySplines=".42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1" values="0 17.0 66.0;-270 17.0 66.0;-270 17.0 66.0;-540 17.0 66.0;-540 17.0 66.0;-810 17.0 66.0;-810 17.0 66.0;-1080 17.0 66.0;-1080 17.0 66.0"/></linearGradient><linearGradient id="nm-g8" gradientUnits="userSpaceOnUse" x1="0" y1="102" x2="0" y2="-2"><stop stop-color="#2fa6c6"/><stop offset="1" stop-color="#6fd6ea"/></linearGradient><linearGradient id="nm-g9" gradientUnits="userSpaceOnUse" x1="0" y1="102" x2="0" y2="-2"><stop stop-color="#2fa6c6"/><stop offset="1" stop-color="#6fd6ea"/></linearGradient><linearGradient id="nm-g10" gradientUnits="userSpaceOnUse" x1="23.0" y1="134" x2="23.0" y2="-2"><stop stop-color="#2fa6c6"/><stop offset="1" stop-color="#8fe2f0"/><animateTransform attributeName="gradientTransform" type="rotate" dur="8s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.125;0.25;0.375;0.5;0.625;0.75;0.875;1" keySplines=".42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1" values="0 23.0 66.0;-270 23.0 66.0;-270 23.0 66.0;-540 23.0 66.0;-540 23.0 66.0;-810 23.0 66.0;-810 23.0 66.0;-1080 23.0 66.0;-1080 23.0 66.0"/></linearGradient><linearGradient id="nm-g11" gradientUnits="userSpaceOnUse" x1="0" y1="102" x2="0" y2="-2"><stop stop-color="#2fa6c6"/><stop offset="1" stop-color="#6fd6ea"/></linearGradient><linearGradient id="nm-g12" gradientUnits="userSpaceOnUse" x1="0" y1="102" x2="0" y2="-2"><stop stop-color="#2fa6c6"/><stop offset="1" stop-color="#6fd6ea"/></linearGradient><linearGradient id="nm-g13" gradientUnits="userSpaceOnUse" x1="17.0" y1="134" x2="17.0" y2="-2"><stop stop-color="#2fa6c6"/><stop offset="1" stop-color="#8fe2f0"/><animateTransform attributeName="gradientTransform" type="rotate" dur="8s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.125;0.25;0.375;0.5;0.625;0.75;0.875;1" keySplines=".42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1" values="0 17.0 66.0;-270 17.0 66.0;-270 17.0 66.0;-540 17.0 66.0;-540 17.0 66.0;-810 17.0 66.0;-810 17.0 66.0;-1080 17.0 66.0;-1080 17.0 66.0"/></linearGradient></defs>
+            <path class="nm-stroke" style="--i:0" transform="translate(10.0,10.0)" stroke="url(#nm-g0)" pathLength="360" d="M0,100 V0 H28 A26,26 0 0 1 28,52 H0"/>
+            <path class="nm-stroke" style="--i:1" transform="translate(88.0,10.0)" stroke="url(#nm-g1)" pathLength="360" d="M0,100 V45 M0,74 C0,56 12,45 34,46"/>
+            <path class="nm-stroke" style="--i:2" transform="translate(146.0,10.0)" stroke="url(#nm-g2)" pathLength="360" d="M54,72.5 A27,27.5 0 1 0 0,72.5 A27,27.5 0 1 0 54,72.5 M54,45 V100"/>
+            <path class="nm-stroke" style="--i:3" transform="translate(224.0,10.0)" stroke="url(#nm-g3)" pathLength="360" d="M40,53 C33,45 22,44 14,45 C3,47 0,56 3,62 C6,68 16,70 24,72 C35,75 41,82 39,91 C37,99 27,101 18,100 C10,99 3,96 0,91"/>
+            <path class="nm-stroke" style="--i:4" transform="translate(288.0,10.0)" stroke="url(#nm-g4)" pathLength="360" d="M0,0 V100 M0,74 C0,55 10,45 24,45 C38,45 46,55 46,70 V100"/>
+            <path class="nm-stroke" style="--i:5" transform="translate(358.0,10.0)" stroke="url(#nm-g5)" pathLength="360" d="M54,72.5 A27,27.5 0 1 0 0,72.5 A27,27.5 0 1 0 54,72.5 M54,45 V100"/>
+            <path class="nm-stroke" style="--i:6" transform="translate(436.0,10.0)" stroke="url(#nm-g6)" pathLength="360" d="M0,45 V100 M0,74 C0,55 10,45 24,45 C38,45 46,55 46,70 V100"/>
+            <path class="nm-stroke" style="--i:7" transform="translate(506.0,10.0)" stroke="url(#nm-g7)" pathLength="360" d="M12,14 V84 C12,95 18,100 28,100 H34 M0,45 H32"/>
+            <path class="nm-stroke" style="--i:8" transform="translate(10.0,138.0)" stroke="url(#nm-g8)" pathLength="360" d="M18,0 H46 V70 C46,88 35,100 21,100 C9,100 1,92 0,82"/>
+            <path class="nm-stroke" style="--i:9" transform="translate(80.0,138.0)" stroke="url(#nm-g9)" pathLength="360" d="M54,72.5 A27,27.5 0 1 0 0,72.5 A27,27.5 0 1 0 54,72.5 M54,45 V100"/>
+            <path class="nm-stroke" style="--i:10" transform="translate(158.0,138.0)" stroke="url(#nm-g10)" pathLength="360" d="M0,45 V100 M0,74 C0,55 10,45 24,45 C38,45 46,55 46,70 V100"/>
+            <path class="nm-stroke" style="--i:11" transform="translate(228.0,138.0)" stroke="url(#nm-g11)" pathLength="360" d="M54,72.5 A27,27.5 0 1 0 0,72.5 A27,27.5 0 1 0 54,72.5 M54,45 V106 C54,123 43,133 27,133 C15,133 6,128 2,120"/>
+            <path class="nm-stroke" style="--i:12" transform="translate(306.0,138.0)" stroke="url(#nm-g12)" pathLength="360" d="M0,45 V100 M0,17 m-0.5,0 a0.5,0.5 0 1 0 1,0 a0.5,0.5 0 1 0 -1,0"/>
+            <path class="nm-stroke" style="--i:13" transform="translate(330.0,138.0)" stroke="url(#nm-g13)" pathLength="360" d="M0,100 V45 M0,74 C0,56 12,45 34,46"/>
+          </svg>
+          </h1>
           <p class="lead">An AI student passionate about programming and learning new things. Currently exploring
             <span class="rotator" aria-live="polite"><span>Artificial Intelligence</span></span></p>
 
@@ -725,6 +780,50 @@
         return '<div class="skill reveal"><img src="https://skillicons.dev/icons?i=' + s[0] + '" alt="" loading="lazy" width="46" height="46" onerror="this.style.visibility=\'hidden\'">' + s[1] + '</div>';
       }).join('');
 
+      /* ---------- Line the photo panel up with the name ---------- */
+      (function () {
+        var nameSvg = document.querySelector('.name-svg');
+        var portrait = document.querySelector('.portrait');
+        var col = document.querySelector('.hero-text');
+        if (!nameSvg || !portrait || !col) return;
+        function align() {
+          portrait.style.marginTop = '';
+          if (window.innerWidth <= 960) return;            // stacked layout on smaller screens
+          var colTop = col.getBoundingClientRect().top;
+          var nb = nameSvg.getBoundingClientRect();
+          var nameMid = nb.top + nb.height / 2 - colTop;
+          var off = nameMid - portrait.offsetHeight / 2;
+          portrait.style.marginTop = Math.max(0, off) + 'px';
+        }
+        align();
+        window.addEventListener('resize', align);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(align);
+      })();
+
+      /* ---------- Draw the name once, when the page first loads ---------- */
+      (function () {
+        var svg = document.querySelector('.name-svg');
+        if (!svg) return;
+        var strokes = svg.querySelectorAll('.nm-stroke');
+        var lastStroke = strokes[strokes.length - 1];
+        var busy = false;
+        function play() {
+          if (busy) return;
+          busy = true;
+          svg.classList.remove('done', 'play');
+          void svg.getBoundingClientRect();          // restart the CSS animation
+          svg.classList.add('play');
+        }
+        lastStroke.addEventListener('animationend', function (e) {
+          if (e.animationName !== 'nmArray') return;
+          svg.classList.remove('play');
+          svg.classList.add('done');
+          busy = false;
+        });
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) { svg.classList.add('done'); return; }
+        play();
+      })();
+
       /* ---------- Rotating word ---------- */
       var words = ['Artificial Intelligence', 'Machine Learning', 'Programming', 'Quizzing', 'new ideas'];
       var rot = document.querySelector('.rotator span');
@@ -827,7 +926,6 @@
 
       /* ---------- Hero parallax ---------- */
       var portrait = document.querySelector('.portrait');
-      var heroText = document.querySelector('.hero-text');
       if (!REDUCED && portrait) {
         var ticking = false;
         window.addEventListener('scroll', function () {
@@ -837,8 +935,6 @@
             var y = window.scrollY, h = window.innerHeight;
             if (y < h * 1.2) {
               portrait.style.transform = 'translate3d(0,' + (y * 0.18).toFixed(1) + 'px,0)';
-              heroText.style.transform = 'translate3d(0,' + (y * 0.06).toFixed(1) + 'px,0)';
-              heroText.style.opacity = Math.max(0, 1 - y / (h * 0.9)).toFixed(3);
             }
             ticking = false;
           });
