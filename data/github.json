@@ -1,0 +1,65 @@
+{
+  "user": {
+    "login": "prashantjangir-git-hub",
+    "name": "Prashant Jangir ",
+    "public_repos": 6,
+    "followers": 4,
+    "following": 8
+  },
+  "repos": [
+    {
+      "name": "prashantjangir-git-hub",
+      "fork": false,
+      "language": "HTML",
+      "description": "Config repo for my GitHub profile",
+      "html_url": "https://github.com/prashantjangir-git-hub/prashantjangir-git-hub",
+      "stargazers_count": 0,
+      "pushed_at": "2026-11-19T09:09:08Z"
+    },
+    {
+      "name": "Human-Activity-Recognition-ML-project-",
+      "fork": false,
+      "language": "Jupyter Notebook",
+      "description": "Trained classical models on the UCI HAR dataset and tested them on 9 people the models never saw.",
+      "html_url": "https://github.com/prashantjangir-git-hub/Human-Activity-Recognition-ML-project-",
+      "stargazers_count": 0,
+      "pushed_at": "2026-11-18T22:26:05Z"
+    },
+    {
+      "name": "satellite-pass-replay",
+      "fork": false,
+      "language": "HTML",
+      "description": "website that finds out which satellites are hovering over you and public images taken by them",
+      "html_url": "https://github.com/prashantjangir-git-hub/satellite-pass-replay",
+      "stargazers_count": 0,
+      "pushed_at": "2026-11-14T21:48:58Z"
+    },
+    {
+      "name": "Smell-AI",
+      "fork": false,
+      "language": "Python",
+      "description": "An AI that can smell: a smell model and an electronic nose",
+      "html_url": "https://github.com/prashantjangir-git-hub/Smell-AI",
+      "stargazers_count": 2,
+      "pushed_at": "2026-11-14T13:04:44Z"
+    },
+    {
+      "name": "RakshakAI",
+      "fork": false,
+      "language": "Python",
+      "description": "RakshakAI: Cyber-Aware Safety and Welfare Platform for Senior Citizens",
+      "html_url": "https://github.com/prashantjangir-git-hub/RakshakAI",
+      "stargazers_count": 0,
+      "pushed_at": "2026-09-22T15:15:46Z"
+    },
+    {
+      "name": "SmartSpend",
+      "fork": false,
+      "language": "TypeScript",
+      "description": null,
+      "html_url": "https://github.com/prashantjangir-git-hub/SmartSpend",
+      "stargazers_count": 3,
+      "pushed_at": "2026-07-26T05:49:50Z"
+    }
+  ]
+}
