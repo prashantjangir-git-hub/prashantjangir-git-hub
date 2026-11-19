@@ -978,19 +978,39 @@
       }
 
       /* ---------- Live GitHub data ---------- */
+      /* 1st choice: data/github.json, written by the "Update GitHub data" Action
+         (no rate limit, works on any network).
+         2nd choice: the live GitHub API, cached in localStorage for an hour.
+         If the API refuses (e.g. 60 requests/hour limit on a shared network),
+         the last good copy is shown instead of an error, however old it is. */
+      var CACHE_MS = 60 * 60 * 1000;
+
       function getJSON(url) {
-        var key = 'pj-cache:' + url;
-        try {
-          var c = JSON.parse(sessionStorage.getItem(key) || 'null');
-          if (c && Date.now() - c.t < 10 * 60 * 1000) return Promise.resolve(c.d);
-        } catch (e) {}
+        var key = 'pj-cache:' + url, c = null;
+        try { c = JSON.parse(localStorage.getItem(key) || 'null'); } catch (e) {}
+        if (c && Date.now() - c.t < CACHE_MS) return Promise.resolve(c.d);
         return fetch(url, { headers: { Accept: 'application/vnd.github+json' } }).then(function (r) {
           if (!r.ok) throw new Error(r.status);
           return r.json();
         }).then(function (d) {
-          try { sessionStorage.setItem(key, JSON.stringify({ t: Date.now(), d: d })); } catch (e) {}
+          try { localStorage.setItem(key, JSON.stringify({ t: Date.now(), d: d })); } catch (e) {}
           return d;
+        }).catch(function (err) {
+          if (c) return c.d;          // stale but better than nothing
+          throw err;
         });
+      }
+
+      var snapshot = fetch('data/github.json', { cache: 'no-cache' }).then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        return r.json();
+      }).then(function (d) {
+        if (!d || !d.user || !Array.isArray(d.repos)) throw new Error('bad snapshot');
+        return d;
+      }).catch(function () { return null; });
+
+      function ghData(part, url) {
+        return snapshot.then(function (s) { return s ? s[part] : getJSON(url); });
       }
 
       function timeAgo(iso) {
@@ -1007,7 +1027,7 @@
       var FOLDER = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.59 4.59A2 2 0 0 0 9.17 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-1.41-1.41Z"/></svg>';
       var ARROW = '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M13.3 5.3a1 1 0 0 1 1.4 0l6 6a1 1 0 0 1 0 1.4l-6 6a1 1 0 0 1-1.4-1.4l4.29-4.3H4a1 1 0 1 1 0-2h13.59L13.3 6.7a1 1 0 0 1 0-1.4Z"/></svg>';
 
-      getJSON(API).then(function (u) {
+      ghData('user', API).then(function (u) {
         document.getElementById('st-repos').textContent = u.public_repos;
         document.getElementById('st-followers').textContent = u.followers;
         document.getElementById('st-following').textContent = u.following;
@@ -1020,7 +1040,7 @@
       var reposEl = document.getElementById('repos');
       var langsEl = document.getElementById('langs');
 
-      getJSON(API + '/repos?per_page=100&sort=pushed').then(function (repos) {
+      ghData('repos', API + '/repos?per_page=100&sort=pushed').then(function (repos) {
         var own = repos.filter(function (r) { return !r.fork && r.name.toLowerCase() !== USER.toLowerCase(); });
 
         // Languages (by number of repositories)
