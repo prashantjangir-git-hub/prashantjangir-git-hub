@@ -2,11 +2,20 @@
   "user": {
     "login": "prashantjangir-git-hub",
     "name": "Prashant Jangir ",
-    "public_repos": 6,
+    "public_repos": 7,
     "followers": 4,
     "following": 8
   },
   "repos": [
+    {
+      "name": "emg-vr-walking",
+      "fork": false,
+      "language": "HTML",
+      "description": "Real-time calf EMG controls walking in a Unity game: every muscle burst moves the character one stride past swinging hammers. Four filtering techniques (IIR, FIR + LMS, wavelet, TKEO) compared, Python BioRadio bridge, and a live browser prototype.",
+      "html_url": "https://github.com/prashantjangir-git-hub/emg-vr-walking",
+      "stargazers_count": 0,
+      "pushed_at": "2026-11-19T10:45:05Z"
+    },
     {
       "name": "prashantjangir-git-hub",
       "fork": false,
@@ -14,7 +23,7 @@
       "description": "Config repo for my GitHub profile",
       "html_url": "https://github.com/prashantjangir-git-hub/prashantjangir-git-hub",
       "stargazers_count": 0,
-      "pushed_at": "2026-11-19T09:09:17Z"
+      "pushed_at": "2026-11-19T09:09:51Z"
     },
     {
       "name": "Human-Activity-Recognition-ML-project-",
