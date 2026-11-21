@@ -2,7 +2,7 @@
   "user": {
     "login": "prashantjangir-git-hub",
     "name": "Prashant Jangir ",
-    "public_repos": 7,
+    "public_repos": 8,
     "followers": 4,
     "following": 8
   },
@@ -14,7 +14,16 @@
       "description": "Config repo for my GitHub profile",
       "html_url": "https://github.com/prashantjangir-git-hub/prashantjangir-git-hub",
       "stargazers_count": 0,
-      "pushed_at": "2026-11-20T20:08:37Z"
+      "pushed_at": "2026-11-21T14:57:36Z"
+    },
+    {
+      "name": "Study-Buddy",
+      "fork": false,
+      "language": "Python",
+      "description": "A self-learning AI tutor for your lecture slides",
+      "html_url": "https://github.com/prashantjangir-git-hub/Study-Buddy",
+      "stargazers_count": 0,
+      "pushed_at": "2026-11-21T14:44:04Z"
     },
     {
       "name": "emg-vr-walking",
