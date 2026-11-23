@@ -2,11 +2,20 @@
   "user": {
     "login": "prashantjangir-git-hub",
     "name": "Prashant Jangir ",
-    "public_repos": 8,
+    "public_repos": 9,
     "followers": 4,
     "following": 8
   },
   "repos": [
+    {
+      "name": "GandhiGPT",
+      "fork": false,
+      "language": "Jupyter Notebook",
+      "description": "A character-level Transformer trained on Gandhi's writings",
+      "html_url": "https://github.com/prashantjangir-git-hub/GandhiGPT",
+      "stargazers_count": 0,
+      "pushed_at": "2026-11-23T23:43:31Z"
+    },
     {
       "name": "prashantjangir-git-hub",
       "fork": false,
@@ -14,7 +23,7 @@
       "description": "Config repo for my GitHub profile",
       "html_url": "https://github.com/prashantjangir-git-hub/prashantjangir-git-hub",
       "stargazers_count": 0,
-      "pushed_at": "2026-11-22T19:32:29Z"
+      "pushed_at": "2026-11-23T07:29:52Z"
     },
     {
       "name": "Study-Buddy",
