@@ -8,13 +8,13 @@
   },
   "repos": [
     {
-      "name": "prashantjangir-git-hub",
+      "name": "satellite-pass-replay",
       "fork": false,
       "language": "HTML",
-      "description": "Config repo for my GitHub profile",
-      "html_url": "https://github.com/prashantjangir-git-hub/prashantjangir-git-hub",
+      "description": "website that finds out which satellites are hovering over you and public images taken by them",
+      "html_url": "https://github.com/prashantjangir-git-hub/satellite-pass-replay",
       "stargazers_count": 0,
-      "pushed_at": "2026-11-24T08:14:49Z"
+      "pushed_at": "2026-11-24T09:18:49Z"
     },
     {
       "name": "GandhiGPT",
@@ -23,7 +23,16 @@
       "description": "A character-level Transformer trained on Gandhi's writings consisting about 79.4M characters and 228K Model parameters.",
       "html_url": "https://github.com/prashantjangir-git-hub/GandhiGPT",
       "stargazers_count": 0,
-      "pushed_at": "2026-11-24T07:37:33Z"
+      "pushed_at": "2026-11-24T08:55:06Z"
+    },
+    {
+      "name": "prashantjangir-git-hub",
+      "fork": false,
+      "language": "HTML",
+      "description": "Config repo for my GitHub profile",
+      "html_url": "https://github.com/prashantjangir-git-hub/prashantjangir-git-hub",
+      "stargazers_count": 0,
+      "pushed_at": "2026-11-24T08:14:58Z"
     },
     {
       "name": "Study-Buddy",
@@ -49,17 +58,8 @@
       "language": "Jupyter Notebook",
       "description": "Trained classical models on the UCI HAR dataset and tested them on 9 people the models never saw.",
       "html_url": "https://github.com/prashantjangir-git-hub/Human-Activity-Recognition-ML-project-",
-      "stargazers_count": 0,
+      "stargazers_count": 3,
       "pushed_at": "2026-11-18T22:26:05Z"
-    },
-    {
-      "name": "satellite-pass-replay",
-      "fork": false,
-      "language": "HTML",
-      "description": "website that finds out which satellites are hovering over you and public images taken by them",
-      "html_url": "https://github.com/prashantjangir-git-hub/satellite-pass-replay",
-      "stargazers_count": 0,
-      "pushed_at": "2026-11-14T21:48:58Z"
     },
     {
       "name": "Smell-AI",
@@ -85,7 +85,7 @@
       "language": "TypeScript",
       "description": "This is finance managing app that can track your daily day-to-day finances.",
       "html_url": "https://github.com/prashantjangir-git-hub/SmartSpend",
-      "stargazers_count": 3,
+      "stargazers_count": 5,
       "pushed_at": "2026-07-26T05:49:50Z"
     }
   ]
