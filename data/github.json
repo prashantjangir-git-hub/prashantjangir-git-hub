@@ -8,22 +8,22 @@
   },
   "repos": [
     {
-      "name": "GandhiGPT",
-      "fork": false,
-      "language": "Jupyter Notebook",
-      "description": "A character-level Transformer trained on Gandhi's writings",
-      "html_url": "https://github.com/prashantjangir-git-hub/GandhiGPT",
-      "stargazers_count": 0,
-      "pushed_at": "2026-11-23T23:43:31Z"
-    },
-    {
       "name": "prashantjangir-git-hub",
       "fork": false,
       "language": "HTML",
       "description": "Config repo for my GitHub profile",
       "html_url": "https://github.com/prashantjangir-git-hub/prashantjangir-git-hub",
       "stargazers_count": 0,
-      "pushed_at": "2026-11-23T07:29:52Z"
+      "pushed_at": "2026-11-24T07:52:19Z"
+    },
+    {
+      "name": "GandhiGPT",
+      "fork": false,
+      "language": "Jupyter Notebook",
+      "description": "A character-level Transformer trained on Gandhi's writings consisting about 79.4M characters and 228K Model parameters.",
+      "html_url": "https://github.com/prashantjangir-git-hub/GandhiGPT",
+      "stargazers_count": 0,
+      "pushed_at": "2026-11-24T07:37:33Z"
     },
     {
       "name": "Study-Buddy",
