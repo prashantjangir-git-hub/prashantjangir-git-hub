@@ -13,6 +13,7 @@ A B.Tech AI student at IIT Gandhinagar, passionate about AI, programming, and le
 - 🎓 Currently pursuing B.Tech in Artificial Intelligence at IIT Gandhinagar.
 - ⭐ Secretary, IITGN Quizzing Society
 - 🤖 Exploring AI and Machine Learning
+- 💡 Interested in building creative and meaningful projects
 
 ## 📫 Connect With Me
 
@@ -22,7 +23,7 @@ A B.Tech AI student at IIT Gandhinagar, passionate about AI, programming, and le
   <a href="mailto:prashant.jangir@iitgn.ac.in"><img src="./assets/email.svg" alt="Email Prashant Jangir" width="260" /></a>
 </p>
 
-### Featured Projects
+## Featured Projects
 
 | Project | Description |
 |:--|:--|
@@ -31,6 +32,12 @@ A B.Tech AI student at IIT Gandhinagar, passionate about AI, programming, and le
 | 🦾 [EMG VR Walking](https://github.com/prashantjangir-git-hub/emg-vr-walking) | A real-time EMG-controlled walking experience in a Unity game. |
 | 👃 [Smell AI](https://github.com/prashantjangir-git-hub/Smell-AI) | Exploring machine learning and electronic noses for smell recognition. |
 | 🛰️ [Satellite Pass Replay](https://github.com/prashantjangir-git-hub/satellite-pass-replay) | Discover satellites passing overhead and explore publicly available satellite imagery. |
+
+<p align="center">
+  <a href="https://github.com/prashantjangir-git-hub?tab=repositories">
+    <img src="https://img.shields.io/badge/Explore_All_Projects-181717?style=for-the-badge&logo=github&logoColor=white" alt="All Projects"/>
+  </a>
+</p>
 
 ## 🛠 Languages & Tools
 
@@ -44,3 +51,11 @@ A B.Tech AI student at IIT Gandhinagar, passionate about AI, programming, and le
 
 
 <img src="https://komarev.com/ghpvc/?username=prashantjangir-git-hub&style=flat-square&color=6E40C9" alt="Profile Views" />
+
+---
+
+<p align="center">
+  <i>"Curiosity leads to ideas. Building turns them into reality."</i>
+  <br/><br/>
+  Made with ❤️ by <b>Prashant Jangir</b>
+</p>
