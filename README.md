@@ -31,7 +31,7 @@ A B.Tech AI student at IIT Gandhinagar, passionate about AI, programming, and le
 | 📚 [Human-Activity-Recognition-ML-project-](https://github.com/prashantjangir-git-hub/Human-Activity-Recognition-ML-project-) | Trained classical models on the UCI HAR dataset and tested them on 9 people the models never saw. slides. |
 | 🦾 [EMG VR Walking](https://github.com/prashantjangir-git-hub/emg-vr-walking) | A real-time EMG-controlled walking experience in a Unity game. |
 | 👃 [Smell AI](https://github.com/prashantjangir-git-hub/Smell-AI) | Exploring machine learning and electronic noses for smell recognition. |
-| 🛰️ [Satellite Pass Replay](https://github.com/prashantjangir-git-hub/satellite-pass-replay) | Discover satellites passing overhead and explore publicly available satellite imagery. |
+| 🖌️ [PaintStroke AI](https://github.com/prashantjangir-git-hub/Paintstroke_AI) | Transform photographs into paintings, one brushstroke at a time. |
 
 <p align="center">
   <a href="https://github.com/prashantjangir-git-hub?tab=repositories">
