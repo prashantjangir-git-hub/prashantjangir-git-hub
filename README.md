@@ -45,9 +45,7 @@
 
 ## 📊 GitHub Stats:
 
-![](https://github-readme-stats.shion.dev/api/top-langs/?username=prashantjangir-git-hub&theme=shadow_blue&hide_border=false&include_all_commits=true&count_private=true&layout=compact)
-
-
+[![GitHub Stats](https://github-stats-extended.vercel.app/api/top-langs?username=prashantjangir-git-hub&layout=donut&langs_count=5&theme=dark_github)](https://github-stats-extended.vercel.app/api/top-langs?username=prashantjangir-git-hub&layout=donut&langs_count=5&theme=dark_github)
 
 ---
 
