@@ -1,12 +1,4 @@
-# Hi there, I'm Prashant 👋
-
-A B.Tech AI student at IIT Gandhinagar, passionate about AI, programming, and learning new things.
-
-<p align="left">
-  <a href="https://prashantjangir-git-hub.github.io/">
-    <img src="https://img.shields.io/badge/Visit%20my%20website-3fb6d3?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Visit my portfolio website" />
-  </a>
-</p>
+![Header](./header-banner.png)
 
 ## 🚀 About Me
 
@@ -14,7 +6,11 @@ A B.Tech AI student at IIT Gandhinagar, passionate about AI, programming, and le
 - ⭐ Secretary, IITGN Quizzing Society
 - 🤖 Exploring AI and Machine Learning
 - 💡 Interested in building creative and meaningful projects
-
+<p align="left">
+  <a href="https://prashantjangir-git-hub.github.io/">
+    <img src="https://img.shields.io/badge/Visit%20my%20website-3fb6d3?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Visit my portfolio website" />
+  </a>
+</p>
 <img src="https://komarev.com/ghpvc/?username=prashantjangir-git-hub&style=flat-square&color=3fb6d3" alt="Profile Views" />
 
 ## 📫 Connect With Me
