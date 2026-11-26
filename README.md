@@ -15,6 +15,8 @@ A B.Tech AI student at IIT Gandhinagar, passionate about AI, programming, and le
 - 🤖 Exploring AI and Machine Learning
 - 💡 Interested in building creative and meaningful projects
 
+<img src="https://komarev.com/ghpvc/?username=prashantjangir-git-hub&style=flat-square&color=3fb6d3" alt="Profile Views" />
+
 ## 📫 Connect With Me
 
 <p align="center">
@@ -50,7 +52,6 @@ A B.Tech AI student at IIT Gandhinagar, passionate about AI, programming, and le
 ![](https://github-readme-stats.shion.dev/api/top-langs/?username=prashantjangir-git-hub&theme=shadow_blue&hide_border=false&include_all_commits=true&count_private=true&layout=compact)
 
 
-<img src="https://komarev.com/ghpvc/?username=prashantjangir-git-hub&style=flat-square&color=6E40C9" alt="Profile Views" />
 
 ---
 
